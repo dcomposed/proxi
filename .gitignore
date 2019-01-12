@@ -1,2 +1,5 @@
 acme
 portainer
+.env
+docker-compose.yml
+traefik.toml
