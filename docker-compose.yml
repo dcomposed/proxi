@@ -1,4 +1,4 @@
-version: '2.2'
+version: "2.2"
 
 networks:
   haven:
@@ -15,7 +15,7 @@ services:
       - "${IP_BIND:-0.0.0.0}:443:443"
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:traefik.${TRAEFIK_HOSTNAME:-localhost}
+      - traefik.frontend.rule=Host:traefik.${BASE_HOSTNAME:-localhost}
       - traefik.port=8080
       - traefik.docker.network=haven
       - "traefik.frontend.auth.basic=${AUTH_STRING}"
@@ -31,7 +31,7 @@ services:
     container_name: "portainer"
     labels:
       - traefik.enable=true
-      - traefik.frontend.rule=Host:portainer.${TRAEFIK_HOSTNAME:-localhost}
+      - traefik.frontend.rule=Host:portainer.${BASE_HOSTNAME:-localhost}
       - traefik.port=9000
       - traefik.docker.network=haven #full name as docker prepends traefik
 
@@ -52,7 +52,6 @@ services:
       - haven
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-
 # reference for what is needed inside other container compose files:
 # networks:
 #   haven:
