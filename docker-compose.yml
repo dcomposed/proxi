@@ -2,6 +2,7 @@ version: '2.2'
 
 networks:
   haven:
+    name: haven
     driver: bridge
 
 services:
@@ -16,7 +17,7 @@ services:
       - traefik.enable=true
       - traefik.frontend.rule=Host:traefik.${TRAEFIK_HOSTNAME:-localhost}
       - traefik.port=8080
-      - traefik.docker.network=traefik_haven #full name as docker prepends traefik
+      - traefik.docker.network=haven #full name as docker prepends traefik
       - "traefik.frontend.auth.basic=${AUTH_STRING}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -32,7 +33,7 @@ services:
       - traefik.enable=true
       - traefik.frontend.rule=Host:portainer.${TRAEFIK_HOSTNAME:-localhost}
       - traefik.port=9000
-      - traefik.docker.network=traefik_haven #full name as docker prepends traefik
+      - traefik.docker.network=haven #full name as docker prepends traefik
 
     # Automatically choose 'Manage the Docker instance where Portainer is running' by adding <--host=unix:///var/run/docker.sock> to the command
     # uncomment and adapt for templates https://portainer.readthedocs.io/en/latest/templates.html#build-and-host-your-own-templates
@@ -54,14 +55,14 @@ services:
 
 # reference for what is needed inside other container compose files:
 # networks:
-#   traefik_haven:
+#   haven:
 #     external:
-#       name: traefik_haven
+#       name: haven
 # service:
 #   networks:
-#     - traefik_haven
+#     - haven
 #   labels:
 #     - traefik.enable=true
 #     - traefik.frontend.rule=Host:monitor.1zm.in  #,more.comma.sep
 #     - traefik.port=5601 # port exposed by container
-#     - traefik.docker.network=traefik_haven # docker network name
+#     - traefik.docker.network=haven # docker network name
