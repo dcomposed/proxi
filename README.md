@@ -1,5 +1,5 @@
 # proxi
-##   Clone and up, for localhost (No config needed without Lets Encrypt):
+##   Clone and up, for localhost (no config needed):
 ```bash
 git clone https://github.com/dcomposed/proxi.git && cd proxi
 docker-compose up -d
@@ -15,7 +15,7 @@ Without changing the config files you can go to:
  * http://portainer.localhost (create your own user account on first visit)
 --note: lets encrypt will not work on localhost so you will need to "proceed anyway" past your browsers https warnings
 
-##    Config (minimal config needed for unique hosts and Lets Encrypt)
+##    Config (minimal config needed to use your domain and Lets Encrypt)
 
 If you want to customize the configs (and not commit your likely private changes back to any repo), you can first run:
 `./scripts/ignore.sh` to avoid changes showing up in git status.
