@@ -3,6 +3,13 @@
 USER=${1:-admin}
 PASS=${2:-12345}
 
+if [[ $2 -eq '-p' ]]; then
+  echo "pw?"
+  read PASS
+fi
+
+
+
 echo -e "Copy one of the below depending on where you will paste it:\n"
 
 echo '=== for use in docker compose (set traefik.frontend.auth.basic=) ==='

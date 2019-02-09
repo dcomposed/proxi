@@ -3,3 +3,4 @@ portainer
 .env
 traefik.toml
 docker-compose.yml
+logs
