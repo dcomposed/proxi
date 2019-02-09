@@ -62,6 +62,6 @@ services:
 #     - haven
 #   labels:
 #     - traefik.enable=true
-#     - traefik.frontend.rule=Host:monitor.1zm.in  #,more.comma.sep
-#     - traefik.port=5601 # port exposed by container
+#     - traefik.frontend.rule=Host:www.example.com  #,more.comma.sep
+#     - traefik.port=80 # port exposed by container
 #     - traefik.docker.network=haven # docker network name
