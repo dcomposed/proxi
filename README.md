@@ -33,6 +33,7 @@ If you want to customize the configs (and not commit your likely private changes
 
 
 ### Inside of other docker-compose files, you can reference the proxi like this:
+```yml
 networks:
   haven:
     external:
@@ -45,3 +46,4 @@ service:
     - traefik.frontend.rule=Host:www.example.com  #,more.comma.sep
     - traefik.port=80 # port exposed by container
     - traefik.docker.network=haven # docker network name
+```
