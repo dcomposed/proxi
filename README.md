@@ -30,3 +30,18 @@ If you want to customize the configs (and not commit your likely private changes
     * adapt the [network name](https://github.com/dcomposed/proxi/blob/master/docker-compose.yml#L5) if you want/need an alternative name
     * adapt the subdomain hostname of the containers ([traefik](https://github.com/dcomposed/proxi/blob/master/docker-compose.yml#L18) and [portainer](https://github.com/dcomposed/proxi/blob/master/docker-compose.yml#L34) by default):
       * traefik.frontend.rule=Host:YOURCHOSENHOST.${BASE_HOSTNAME:-localhost}
+
+
+### Inside of other docker-compose files, you can reference the proxi like this:
+networks:
+  haven:
+    external:
+      name: haven
+service:
+  networks:
+    - haven
+  labels:
+    - traefik.enable=true
+    - traefik.frontend.rule=Host:www.example.com  #,more.comma.sep
+    - traefik.port=80 # port exposed by container
+    - traefik.docker.network=haven # docker network name
