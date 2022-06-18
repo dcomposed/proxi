@@ -1,6 +1,8 @@
 acme
+letsencrypt
 portainer
 .env
 traefik.toml
+old-traefik.toml
 docker-compose.yml
 logs
